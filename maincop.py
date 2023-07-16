@@ -3,7 +3,6 @@ import os
 import pandas as pd
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
-from test import fetch_messages_from_chats, chat_links, keywords, api_id, api_hash
 
 
 # Set up logging
@@ -34,8 +33,7 @@ async def parsing_data(message: types.Message):
     await message.reply("Начинаю сбор данных с ваших чатов. Сбор данных с учетом фильтров займет примерно 16 минут")
 
     # Тут выполняется команда для запуска скрипта по сбору данных
-    # os.system('python test.py')
-    fetch_messages_from_chats(api_id, api_hash, chat_links, keywords)
+    os.system('python test.py')
 
 
 @dp.message_handler(lambda message: message.text == "Получить файл с данными")
