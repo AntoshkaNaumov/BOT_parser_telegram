@@ -45,7 +45,7 @@ tornado
 tzdata==2023.3
 tzlocal==5.0.1
 urllib3==2.0.3
-Werkzeug==2.3.6
+Werkzeug
 XlsxWriter==3.1.2
 yarl==1.9.2
 zipp==3.16.2
