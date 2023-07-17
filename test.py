@@ -59,7 +59,7 @@ def fetch_messages_from_chats(api_id, api_hash, chat_links, keywords):
                             row += 1
 
                 # Sleep for 20 seconds between iterations
-                # time.sleep(20)
+                time.sleep(20)
 
             except Exception as e:
                 print(f"Error processing chat link: {link}")
