@@ -61,8 +61,8 @@ def fetch_messages_from_chats(chat_links, keywords):
                             worksheet.write(row, 4, message.text)
                             row += 1
 
-                # Sleep for 3 seconds between iterations
-                time.sleep(3)
+                # Sleep for 2 seconds between iterations
+                time.sleep(2)
 
             except Exception as e:
                 print(f"Error processing chat link: {link}")
