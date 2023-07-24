@@ -4,7 +4,6 @@ import pandas as pd
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from config import token
-import pyttsx3
 
 
 # Set up logging
@@ -14,15 +13,10 @@ logging.basicConfig(level=logging.DEBUG)
 bot = Bot(token=token)
 dp = Dispatcher(bot, storage=MemoryStorage())
 
-# Initialize the TTS engine
-engine = pyttsx3.init()
-
 
 # Handler for the "Парсинг данных" command
 @dp.message_handler(commands=['start'])
 async def start(message: types.Message):
-    # ... Existing code ...
-    # Greet the user with a spoken message
     keyboard_markup = types.ReplyKeyboardMarkup(row_width=2)
     buttons = [
         types.KeyboardButton(text="Запустить парсинг данных"),
@@ -30,8 +24,6 @@ async def start(message: types.Message):
         types.KeyboardButton(text="Help"),
     ]
     keyboard_markup.add(*buttons)
-    engine.say("Привет! Что ты хочешь сделать?")
-    engine.runAndWait()
     await message.answer("Привет! Что ты хочешь сделать?", reply_markup=keyboard_markup)
 
 
@@ -59,16 +51,11 @@ async def get_data(message: types.Message):
 # Handler for the "Help" button
 @dp.message_handler(lambda message: message.text == "Help")
 async def help(message: types.Message):
-    # ... Existing code ...
-    # Provide help message and say it aloud
-    help_text = "Помощь по использованию бота:\n" \
-                "1. Команда /start - запуск бота\n" \
-                "2. Кнопка 'Запустить парсинг данных' - запуск парсинга сообщений чата\n" \
-                "3. Кнопка 'Получить файл с данными' - получение xlsx файла от бота\n" \
-                "4. Кнопка 'Help' - отображение справочной информации"
-    engine.say(help_text)
-    engine.runAndWait()
-    await message.answer(help_text)
+    await message.answer("Помощь по использованию бота:\n"
+                         "1. Команда /start - запуск бота\n"
+                         "2. Кнопка 'Запустить парсинг данных' - запуск парсинга сообщений чата\n"
+                         "3. Кнопка 'Получить файл с данными' - получение xlsx файла от бота\n"
+                         "4. Кнопка 'Help' - отображение справочной информации")
 
 
 @dp.message_handler()
