@@ -16,7 +16,7 @@ def fetch_messages_from_chats(chat_links, keywords):
     worksheet = workbook.add_worksheet()
 
     # Write headers to the worksheet
-    worksheet.write_row(0, 0, ["Ключевое слово", "Чат", "Ссылка на чат", "Дата и время", "Текст сообщения"])
+    worksheet.write_row(0, 0, ["Ключевое слово", "Название чата", "Ссылка на чат", "Дата и время", "Текст сообщения"])
 
     # Initialize row counter
     row = 1
